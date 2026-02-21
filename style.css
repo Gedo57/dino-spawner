@@ -1,0 +1,222 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0b0f14;
+  color: #e7eef7;
+}
+.wrap {
+  max-width: 980px;
+  margin: 18px auto;
+  padding: 0 12px;
+}
+.hud {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border: 1px solid #1c2a3a;
+  border-radius: 10px;
+  background: #0f1620;
+  margin-bottom: 10px;
+}
+#game {
+  width: 100%;
+  border: 1px solid #1c2a3a;
+  border-radius: 12px;
+  background: #0f1620;
+  display: block;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+button {
+  border: 1px solid #2a3b52;
+  background: #132033;
+  color: #e7eef7;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover { background: #182a43; }
+button.danger { border-color: #7c2a2a; background: #2a1414; }
+button.danger:hover { background: #3a1818; }
+.tips { opacity: 0.85; margin-top: 8px; }
+.note { font-size: 0.92rem; opacity: 0.8; }
+
+.stat{margin-inline-start:14px;}
+
+.milestone{
+  position:absolute;
+  left:50%;
+  top:22%;
+  transform:translateX(-50%);
+  padding:14px 18px;
+  border-radius:14px;
+  background:rgba(10,16,22,0.92);
+  border:1px solid rgba(215,255,233,0.25);
+  color:#d7ffe9;
+  font:700 18px system-ui;
+  letter-spacing:0.2px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.35);
+  pointer-events:none;
+  z-index:5;
+  max-width:80%;
+  text-align:center;
+  backdrop-filter: blur(6px);
+}
+.milestone.hidden{display:none;}
+.milestoneLog{
+  position:absolute;
+  left:18px;
+  top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  z-index:4;
+  pointer-events:none;
+}
+.milestoneLog .item{
+  padding:6px 10px;
+  border-radius:10px;
+  background:rgba(10,16,22,0.78);
+  border:1px solid rgba(215,255,233,0.14);
+  color:rgba(215,255,233,0.85);
+  font:600 12px system-ui;
+  max-width:360px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+button.ghost{
+  background:transparent;
+  border:1px solid rgba(215,255,233,0.18);
+  color:rgba(215,255,233,0.9);
+}
+button.ghost:hover{
+  border-color:rgba(215,255,233,0.35);
+}
+
+.topLeftUI{
+  position:absolute;
+
+
+  z-index:6;
+  pointer-events:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(10,16,22,0.78);
+  border:1px solid rgba(215,255,233,0.18);
+  backdrop-filter: blur(6px);
+  max-width:420px;
+  top: 16px;
+  inset-inline-start: 240px; /* move panel to the marked area */
+}
+.topLeftUI .row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:rgba(215,255,233,0.92);
+  font:700 12px system-ui;
+}
+.topLeftUI .k{
+  color:rgba(215,255,233,0.75);
+  font:800 12px system-ui;
+}
+.hearts{
+  display:inline-flex;
+  gap:4px;
+  flex-wrap:wrap;
+}
+.heart{
+  display:inline-block;
+  width:12px;
+  height:12px;
+  border-radius:4px;
+  background:rgba(255, 107, 107, 0.92);
+  border:1px solid rgba(255,255,255,0.18);
+  box-shadow:0 2px 8px rgba(0,0,0,0.25);
+}
+.activePowers{
+  font:800 12px system-ui;
+  color:rgba(215,255,233,0.95);
+}
+
+/* Cities panel (right side) */
+.cityPanel{
+  position:fixed;
+  top: 18px;
+  right: 18px;
+  width: 280px;
+  max-height: calc(100vh - 36px);
+  display:flex;
+  flex-direction:column;
+  border-radius:16px;
+  background:rgba(10,16,22,0.78);
+  border:1px solid rgba(215,255,233,0.18);
+  backdrop-filter: blur(6px);
+  overflow:hidden;
+}
+.cityPanelHeader{
+  padding:12px 14px;
+  font:800 13px system-ui;
+  color:rgba(215,255,233,0.95);
+  border-bottom:1px solid rgba(215,255,233,0.12);
+}
+.cityPanelBody{
+  padding:10px 12px;
+  overflow:auto;
+}
+.cityTable{
+  width:100%;
+  border-collapse:collapse;
+}
+.cityTable th,
+.cityTable td{
+  padding:8px 8px;
+  text-align:start;
+  font:700 12px system-ui;
+  color:rgba(215,255,233,0.88);
+  border-bottom:1px solid rgba(215,255,233,0.08);
+}
+.cityTable th{
+  position:sticky;
+  top:0;
+  background:rgba(10,16,22,0.92);
+  color:rgba(215,255,233,0.95);
+  z-index:1;
+}
+.cityRowDestroyed td{
+  color:rgba(255, 107, 107, 0.95);
+}
+.cityBadge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:2px 8px;
+  border-radius:999px;
+  border:1px solid rgba(215,255,233,0.18);
+  font:800 11px system-ui;
+  white-space:nowrap;
+}
+.cityBadge.ok{
+  color:rgba(215,255,233,0.92);
+  background:rgba(46, 229, 157, 0.10);
+}
+.cityBadge.bad{
+  color:rgba(255, 107, 107, 0.95);
+  background:rgba(255, 107, 107, 0.10);
+}
+
+@media (max-width: 1200px){
+  /* Hide the side panel on small screens to avoid overlap */
+  .cityPanel{ display:none; }
+}

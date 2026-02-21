@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dino Spawner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hud">
+      <div><span id="lblDistance">Distance</span>: <span id="distance">0</span></div>
+      <div><span id="lblBest">Best</span>: <span id="best">0</span>
+      <span class="stat"><span id="lblLives">Lives</span>: <b id="lives">1</b></span>
+      <span class="stat"><span id="lblPower">Power</span>: <b id="pu">-</b></span></div>
+      <div>AI: <span id="eps">0.30</span></div>
+      <div><span id="lblStatus">Status</span>: <span id="status">RUN</span></div>
+    </header>
+
+    <canvas id="game" width="960" height="320"></canvas>
+    <div id="milestone" class="milestone hidden"></div>
+    <div id="milestoneLog" class="milestoneLog"></div>
+    <div id="topLeftUI" class="topLeftUI">
+      <div class="row"><span class="k" id="lblLivesInline">Lives</span>: <span id="hearts" class="hearts"></span></div>
+      <div class="row"><span class="k" id="lblPowerInline">Power</span>: <span id="activePowers" class="activePowers">-</span></div>
+    </div>
+
+    <section class="controls">
+      <button id="spawnCactus">🌵 Spawn Cactus</button>
+      <button id="spawnBird">🐦 Spawn Bird</button>
+      <button id="resetAI" class="danger">Reset Plan</button>
+      <button id="restart">Restart</button>
+    </section>
+
+    <section class="tips">
+      <p>
+        <span id="lblShortcuts">Shortcuts</span>: (C) Cactus — (B) Bird — (R) Restart — (X) Reset Plan
+      </p>
+      <p class="note" id="noteText">
+  Shortcuts: (C) Cactus — (B) Bird — (R) Restart — (X) Reset.
+  Powerups spawn randomly: 🛡️ Shield (3s immunity) — ⛔ Spawn Lock (blocks your spawn for 2s) — ❤️ Heart (extra life).
+</p>
+    </section>
+  </main>
+
+  <aside id="cityPanel" class="cityPanel">
+    <div class="cityPanelHeader" id="cityPanelTitle">Cities</div>
+    <div class="cityPanelBody">
+      <table class="cityTable">
+        <thead>
+          <tr>
+            <th id="cityCol">City</th>
+            <th id="statusCol">Status</th>
+          </tr>
+        </thead>
+        <tbody id="cityTbody"></tbody>
+      </table>
+    </div>
+  </aside>
+
+
+  <script src="game.js"></script>
+</body>
+</html>
